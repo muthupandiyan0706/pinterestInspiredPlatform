@@ -33,5 +33,9 @@ export const formatDate = (dateString) => {
 export const getImageUrl = (url) => {
   if (!url) return 'https://placehold.co/400x600/efefef/999?text=No+Image';
   if (url.startsWith('http')) return url;
-  return url;
+  
+  const apiUrl = import.meta.env.VITE_API_URL || '';
+  const baseUrl = apiUrl.replace(/\/api$/, '');
+  
+  return `${baseUrl}${url}`;
 };
